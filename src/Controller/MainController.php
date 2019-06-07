@@ -14,14 +14,23 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use App\Entity\Movie;
 use App\Form\MovieType;
+use FOS\OAuthServerBundle\Model\ClientManagerInterface;
+
 /**
  * Movie controller.
  * @Route("/api", name="api_")
  */
 class MainController extends FOSRestController
 {
+    private $client_manager;
+
+    public function __construct(ClientManagerInterface $client_manager)
+    {
+        $this->client_manager = $client_manager;
+    }
+
     /**
-     * Lists all Movies.
+     * Lists all Movies
      * @Rest\Get("/movies")
      *
      * @return Response
@@ -32,8 +41,9 @@ class MainController extends FOSRestController
         $movies = $repository->findall();
         return $this->handleView($this->view($movies));
     }
+
     /**
-     * Create Movie.
+     * Create Movie
      * @Rest\Post("/movie")
      *
      * @return Response

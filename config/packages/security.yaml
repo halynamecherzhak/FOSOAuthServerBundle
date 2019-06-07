@@ -27,11 +27,11 @@ security:
             stateless:  true
             anonymous:  false
         main:
-         pattern: ^/
-         form_login:
-             provider: fos_userbundle
-             csrf_token_generator: security.csrf.token_manager
-         anonymous: true
+             pattern: ^/
+             form_login:
+                 provider: fos_userbundle
+                 csrf_token_generator: security.csrf.token_manager
+             anonymous: true
 
     access_control:
         - { path: ^/api, roles: [ IS_AUTHENTICATED_FULLY ] }
