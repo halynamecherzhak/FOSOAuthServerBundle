@@ -67,5 +67,7 @@ class SecurityController extends FOSRestController
      * @return Response
      */
     public function getAccessToken(Request $request){
+
+        return $this->redirectToRoute('/movies');
     }
 }

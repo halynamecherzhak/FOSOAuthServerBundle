@@ -31,7 +31,7 @@ class MainController extends FOSRestController
 
     /**
      * Lists all Movies
-     * @Rest\Get("/movies")
+     * @Rest\Get("/movies", name="movies_list")
      *
      * @return Response
      */
